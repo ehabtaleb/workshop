@@ -26,7 +26,9 @@ public class Shuffler {
 	private static void shuffle(int[] origin2) {
 		Random r = new Random();
 		for(int i = 0;i < origin.length; i++){
+			//find a random index in remainning array
 			int idx = r.nextInt(origin.length - i) + i;
+			//swap in place
 			int tmp = origin[i];
 			origin[i] = origin[idx];
 			origin[idx] = tmp;
@@ -44,7 +46,7 @@ public class Shuffler {
 	private static void init(int[] origin) {
 		Random r = new Random();
 		for(int i = 0; i < origin.length; i++){
-			origin[i] = r.nextInt(20)+1;
+			origin[i] = r.nextInt(20)-9;
 		}
 	}
 
