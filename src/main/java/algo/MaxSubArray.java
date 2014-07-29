@@ -21,32 +21,28 @@ public class MaxSubArray {
 	public static void main(String[] args) {
 		init(origin);
 		print(origin);
-		int [] sub = findMaxSubArray(origin);
-		print(sub);
+		int max = 0;
+		for(int i = 0; i < origin.length; i++){
+			//int sum = sumSubArray(i, origin);
+			int sum = 0;
+			for(int j = 0; j <= i; j++){
+					sum += origin[j];
+			}
+			System.out.printf("for i %d the sum is %d \n", i, sum);
+			if(sum > max)
+				max = sum;
+		}
+		
+		System.out.println(max);
 
 	}
 	
-	private static int[] findMaxSubArray(int[] origin) {
-		int max = 0;
-
-		int[] maxSub = new int[origin.length];
-		for(int i = 0; i < origin.length; i++){
-			int[] sub = new int [i+1];
-			int sum = 0;
-			for(int j = 0; j <= i; j++){
-				if(origin[j] < 0)
-					break;
-				sub[j] = origin[j];
-				sum += origin[j];
-			}
-			if(sum > max){
-				max = sum;
-				maxSub = sub;		
-			}
-			print(maxSub);
+	private static int sumSubArray(int idx, int[] origin) {
+		int sum = 0;
+		for(int i = 0; i <= idx; i++){
+				sum += origin[i];
 		}
-		
-		return maxSub;
+		return sum;
 	}
 
 	private static void print(int[] origin2) {
